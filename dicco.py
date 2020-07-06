@@ -6,7 +6,7 @@ data = json.load(open("data.json"))
 def definit(word):
 	word = word.lower()
 	if word in data:
-		return ("\n- ".join(data[word]))
+		return (data[word])
 	elif len(get_close_matches(word, data.keys())) > 0:
 		yn = input("Did you mean %s instead ? Enter Y if yes or N if no: " % get_close_matches(word, data.keys())[0])
 		if yn == "Y":
@@ -20,5 +20,8 @@ def definit(word):
 
 word = input("Enter a word: ")
 
-print("- ", definit(word))
+output = definit(word)
+
+for item in output:
+	print("-", item)
 
